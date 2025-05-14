@@ -21,15 +21,12 @@ namespace seriesAnalyzerProject
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries = AraayToList(arrayStrSeries); // ממיר את המערך לרשימה של מחרוזות ושומר את ההמרה במשתנה - listStrSeries
+            List<string> listStrSeries = AraayToList(arrayStrSeries); // listStrSeries - ממיר את המערך לרשימה של מחרוזות ושומר את ההמרה במשתנה 
 
             ValidEmpty(listStrSeries); // מוודא שיש ערכים ברשימה
 
 
             ValidInt(listStrSeries); // מוודא שהרשימה מחזירה רק מספרים
-
-            
-
 
             List<int> listint = ListStrToListInt(listStrSeries); // ממיר את הרשימה לרשימה של int ושומר אותה במשתנה - listint
 
@@ -40,6 +37,10 @@ namespace seriesAnalyzerProject
             Menu(); // מציג למשתמש תפריט עם אופציות לבחירה
 
             MakingChoice(listint); // מפעיל פונקציות בהתאם לביחרת המשתמש
+
+
+
+
         }
 
         static List<string> AraayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
@@ -141,11 +142,12 @@ namespace seriesAnalyzerProject
                 "\n7. Display the average of the numbers" +
                 "\n8. Display the number of elements in the series" +
                 "\n9. Display the sum of the elements in the series" +
-                "\n10. Exit");
+                "\n10. Exit\n");
         }
         static void MakingChoice(List<int> listNum)
         {
             string choice = Console.ReadLine();
+            Console.WriteLine("");
 
             switch (choice)
             {
@@ -230,9 +232,9 @@ namespace seriesAnalyzerProject
         {
             foreach (int num in BubbleSort(listint))
             {
-                Console.Write($" {num} ");
+                Console.Write($"{num} ");
             }
-            Console.WriteLine("\n");
+            Console.WriteLine("");
 
 
         }
@@ -298,7 +300,7 @@ namespace seriesAnalyzerProject
         static void Print(int Write)
         {
             Console.WriteLine($"{Write} ");
-            Console.WriteLine("\n");
+            Console.WriteLine("");
         }
     }
 }
