@@ -16,42 +16,44 @@ namespace seriesAnalyzerProject
             Start(args);
         }
 
-     
+
 
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries =  AraayToList(arrayStrSeries);
-            
+            List<string> listStrSeries = AraayToList(arrayStrSeries);
+
             ValidEmpty(listStrSeries);
-            
-            List<int> listint;
+
 
             ValidInt(listStrSeries);
-            
+
             ListStrToListInt(listStrSeries);
-            
+
+            List<int> listint;
+
+
             listint = ListStrToListInt(listStrSeries);
-            
+
             ValidPositive(listint);
-            
+
             ValidThree(listint);
-            
+
             Menu();
-            
+
             MakingChoice(listint);
         }
 
         static List<string> AraayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
         {
-            List<string> ListStrSeries = new List<string>();
+            List<string> listStrSeries = new List<string>();
 
             foreach (var val in seriesNumbers)
             {
-                ListStrSeries.Add(val);
+                listStrSeries.Add(val);
             }
-            
-            return ListStrSeries;
+
+            return listStrSeries;
         }
 
 
@@ -69,9 +71,9 @@ namespace seriesAnalyzerProject
 
 
 
-        static void ValidEmpty(List<string> ListStrSeries)
+        static void ValidEmpty(List<string> listStrSeries)
         {
-            if (ListStrSeries.Count == 0)
+            if (listStrSeries.Count == 0)
             {
                 Console.WriteLine("No number entered");
                 InputNum();
@@ -79,9 +81,9 @@ namespace seriesAnalyzerProject
 
         }
 
-        static void ValidInt(List<string> ListStrSeries) // Receives a list of strings and confirms that all iterations contain only numbers.
+        static void ValidInt(List<string> listStrSeries) // Receives a list of strings and confirms that all iterations contain only numbers.
         {
-            foreach (var val in ListStrSeries)
+            foreach (var val in listStrSeries)
             {
 
                 if (!int.TryParse(val, out int num))
@@ -91,21 +93,21 @@ namespace seriesAnalyzerProject
                 }
 
             }
-        } 
-
-        static List<int> ListStrToListInt(List<string> ListStrSeries) // Receives a list of strings and converts it to a list of integers.
-        {
-            List<int> ListIntSeries = new List<int>();
-            foreach (var val in ListStrSeries)
-            {
-                ListIntSeries.Add(Convert.ToInt32(val));
-            }
-            return ListIntSeries;
         }
 
-        static void ValidPositive(List<int> ListIntSeries) // Receives a list of integers and checks if all numbers in the list are positive.
+        static List<int> ListStrToListInt(List<string> listStrSeries) // Receives a list of strings and converts it to a list of integers.
         {
-            foreach (var val in ListIntSeries)
+            List<int> listIntSeries = new List<int>();
+            foreach (var val in listStrSeries)
+            {
+                listIntSeries.Add(Convert.ToInt32(val));
+            }
+            return listIntSeries;
+        }
+
+        static void ValidPositive(List<int> listIntSeries) // Receives a list of integers and checks if all numbers in the list are positive.
+        {
+            foreach (var val in listIntSeries)
             {
                 if (val < 0)
                 {
@@ -115,10 +117,11 @@ namespace seriesAnalyzerProject
             }
         }
 
-        static void ValidThree(List<int> ListIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
+        static void ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
         {
-             if (ListIntSeries.Count < 3)
-                InputNum();
+            if (listIntSeries.Count < 3)
+                Console.WriteLine("Fewer than three numbers entered! ");
+            InputNum();
         }
 
         static void Menu()
@@ -146,31 +149,48 @@ namespace seriesAnalyzerProject
                     break;
                 case "2":
                     DisplayInOrder(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
                 case "3":
                     DisplayFromEnd(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
                 case "4":
                     DisplayFromSmallest(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
                 case "5":
                     LargestNumber(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
                 case "6":
                     SmallestNumber(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
                 case "7":
                     Average(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
                 case "8":
                     NumberOfElements(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
                 case "9":
                     SumOfElements(listNum);
+                    Menu();
+                    MakingChoice(listNum);
                     break;
-             
+
                 case "10":
                     break;
+
                 default:
                     Menu();
                     MakingChoice(listNum);
@@ -184,7 +204,7 @@ namespace seriesAnalyzerProject
         {
             foreach (var num in listint)
             {
-                Console.Write($" {num}");
+                Console.Write($" {num} \n");
             }
         }
 
@@ -192,21 +212,21 @@ namespace seriesAnalyzerProject
         {
             for (int i = listint.Count - 1; i >= 0; i--)
             {
-                Console.Write($" {listint[i]}");
-                    
+                Console.Write($" {listint[i]} \n");
+
             }
         }
 
         static void DisplayFromSmallest(List<int> listint)  //Display numbers from smallest to largest.
         {
             foreach (int num in BubbleSort(listint))
-            { 
-                Console.Write($" {num}"); 
+            {
+                Console.Write($" {num} \n");
             }
 
         }
 
-        static void LargestNumber (List<int> listint)   //Display the largest number.
+        static void LargestNumber(List<int> listint)   //Display the largest number.
         {
             Console.Write("The largest number on the list is: ");
             Print(BubbleSort(listint)[listint.Count - 1]);
@@ -224,7 +244,7 @@ namespace seriesAnalyzerProject
             Print(SumOfElements(listint) / listint.Count);
             //return sumOfElements(listint) / listint.Count;
         }
-        static void NumberOfElements (List<int> listint) //Display the number of elements in the series
+        static void NumberOfElements(List<int> listint) //Display the number of elements in the series
         {
             Console.Write("The number of members in the list is: ");
             Print(listint.Count);
@@ -232,7 +252,7 @@ namespace seriesAnalyzerProject
         }
         static int SumOfElements(List<int> listint)  // Display the sum of the elements in the series.
         {
-          int sum = 0;
+            int sum = 0;
             foreach (int num in listint)
                 sum += num;
             Console.Write("The sum of all the elements in the list is: ");
@@ -265,17 +285,8 @@ namespace seriesAnalyzerProject
         }
 
         static void Print(int Write)
-        { 
-            Console.WriteLine(Write); 
+        {
+            Console.WriteLine($"{Write} \n");
         }
     }
 }
-
-
-
-
-
-
-
-
-
