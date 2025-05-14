@@ -63,9 +63,9 @@ namespace seriesAnalyzerProject
         static void InputNum() // Receives an array of strings from the user.
         {
             Console.WriteLine("Please enter at least three positive numbers:");
-            string[] seriesNumbers = Console.ReadLine().Split(' ');
+            string[] arrayStrSeries = Console.ReadLine().Split(' ');
 
-            Start(seriesNumbers);
+            Start(arrayStrSeries);
         }
 
 
@@ -102,6 +102,7 @@ namespace seriesAnalyzerProject
             {
                 listIntSeries.Add(Convert.ToInt32(val));
             }
+
             return listIntSeries;
         }
 
@@ -115,18 +116,23 @@ namespace seriesAnalyzerProject
                     InputNum();
                 }
             }
+
         }
 
         static void ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
         {
             if (listIntSeries.Count < 3)
+            {
                 Console.WriteLine("Fewer than three numbers entered! ");
-            InputNum();
+                InputNum();
+            }
+
+
         }
 
         static void Menu()
         {
-            Console.WriteLine("Please select one of the following options:" +
+            Console.WriteLine("\nPlease select one of the following options: \n" +
                 "\n1. Enter a new series of numbers" +
                 "\n2. Display numbers in the order they were entered" +
                 "\n3. Display numbers from end to beginning" +
@@ -204,25 +210,31 @@ namespace seriesAnalyzerProject
         {
             foreach (var num in listint)
             {
-                Console.Write($" {num} \n");
+                Console.Write($" {num} ");
+                
             }
+            Console.WriteLine("\n");
         }
 
         static void DisplayFromEnd(List<int> listint)   //Display numbers from end to beginning.
         {
             for (int i = listint.Count - 1; i >= 0; i--)
             {
-                Console.Write($" {listint[i]} \n");
+                Console.Write($" {listint[i]} ");
 
             }
+            Console.WriteLine("\n");
+
         }
 
         static void DisplayFromSmallest(List<int> listint)  //Display numbers from smallest to largest.
         {
             foreach (int num in BubbleSort(listint))
             {
-                Console.Write($" {num} \n");
+                Console.Write($" {num} ");
             }
+            Console.WriteLine("\n");
+
 
         }
 
@@ -286,7 +298,8 @@ namespace seriesAnalyzerProject
 
         static void Print(int Write)
         {
-            Console.WriteLine($"{Write} \n");
+            Console.WriteLine($"{Write} ");
+            Console.WriteLine("\n");
         }
     }
 }
