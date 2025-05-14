@@ -21,27 +21,25 @@ namespace seriesAnalyzerProject
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries = AraayToList(arrayStrSeries);
+            List<string> listStrSeries = AraayToList(arrayStrSeries); // ממיר את המערך לרשימה של מחרוזות ושומר את ההמרה במשתנה - listStrSeries
 
-            ValidEmpty(listStrSeries);
-
-
-            ValidInt(listStrSeries);
-
-            ListStrToListInt(listStrSeries);
-
-            List<int> listint;
+            ValidEmpty(listStrSeries); // מוודא שיש ערכים ברשימה
 
 
-            listint = ListStrToListInt(listStrSeries);
+            ValidInt(listStrSeries); // מוודא שהרשימה מחזירה רק מספרים
 
-            ValidPositive(listint);
+            
 
-            ValidThree(listint);
 
-            Menu();
+            List<int> listint = ListStrToListInt(listStrSeries); // ממיר את הרשימה לרשימה של int ושומר אותה במשתנה - listint
 
-            MakingChoice(listint);
+            ValidPositive(listint); // מוודא שהרשימה מכילה רק מספרים חיוביים
+
+            ValidThree(listint); // מוודא שיש ברשימה לפחות שלושה ערכים
+
+            Menu(); // מציג למשתמש תפריט עם אופציות לבחירה
+
+            MakingChoice(listint); // מפעיל פונקציות בהתאם לביחרת המשתמש
         }
 
         static List<string> AraayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
@@ -52,9 +50,10 @@ namespace seriesAnalyzerProject
             {
                 listStrSeries.Add(val);
             }
-
             return listStrSeries;
-        }
+         }
+
+        
 
 
 
