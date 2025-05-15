@@ -16,9 +16,6 @@ namespace seriesAnalyzerProject
             Start(args);
         }
 
-
-
-
         static void Start(string[] arrayStrSeries)
         {
             List<string> listStrSeries = new List<string>();
@@ -43,14 +40,14 @@ namespace seriesAnalyzerProject
             }
 
 
-            
 
- 
 
-              
-            
 
-         
+
+
+
+
+
 
 
 
@@ -67,7 +64,7 @@ namespace seriesAnalyzerProject
                 listStrSeries.Add(val);
             }
             return listStrSeries;
-         }
+        }
 
         static bool ValidIsFull(List<string> listStrSeries)
         {
@@ -126,7 +123,7 @@ namespace seriesAnalyzerProject
             switch (num)
             {
                 case 1:
-                Console.WriteLine("ERROR - No number entered! ");
+                    Console.WriteLine("ERROR - No number entered! ");
                     break;
                 case 2:
                     Console.WriteLine("ERROR - The value entered is not a number! ");
@@ -135,7 +132,7 @@ namespace seriesAnalyzerProject
                     Console.WriteLine("ERROR - The number entered is not a positive number! ");
                     break;
                 case 4:
-                Console.WriteLine("ERROR - Fewer than three numbers entered! ");
+                    Console.WriteLine("ERROR - Fewer than three numbers entered! ");
                     break;
                 default:
                     // code block
@@ -149,13 +146,6 @@ namespace seriesAnalyzerProject
 
             Start(arrayStrSeries);
         }
-
-
-
-
-
-
-
         static List<int> ListStrToListInt(List<string> listStrSeries) // Receives a list of strings and converts it to a list of integers.
         {
             List<int> listIntSeries = new List<int>();
@@ -166,10 +156,6 @@ namespace seriesAnalyzerProject
 
             return listIntSeries;
         }
-
-
-
-
         static void Menu()
         {
             Console.WriteLine("\nPlease select one of the following options: \n" +
@@ -254,7 +240,6 @@ namespace seriesAnalyzerProject
             foreach (var num in listint)
             {
                 Console.Write($"{num} ");
-                
             }
             Console.WriteLine("\n");
         }
@@ -264,10 +249,8 @@ namespace seriesAnalyzerProject
             for (int i = listint.Count - 1; i >= 0; i--)
             {
                 Console.Write($"{listint[i]} ");
-
             }
             Console.WriteLine("\n");
-
         }
 
         static void DisplayFromSmallest(List<int> listint)  //Display numbers from smallest to largest.
@@ -277,37 +260,31 @@ namespace seriesAnalyzerProject
                 Console.Write($"{num} ");
             }
             Console.WriteLine("");
-
-
         }
 
         static void LargestNumber(List<int> listint)   //Display the largest number.
         {
             Console.Write($"The largest number on the list is: {BubbleSort(listint)[listint.Count - 1]}\n");
-            //return BubbleSort(listint)[listint.Count -1];
         }
 
         static void SmallestNumber(List<int> listint)  //Display the smallest number.
         {
             Console.Write($"The smallest number on the list is: {BubbleSort(listint)[0]}\n");
-            //return BubbleSort(listint)[0];
         }
         static void Average(List<int> listint)   //Display the average of the numbers.
         {
-            Console.Write($"The average of the numbers in the list is: {SumOfElements(listint) / listint.Count}\n");
-            //return sumOfElements(listint) / listint.Count;
+            int average = SumOfElements(listint) / listint.Count;
+            Console.Write($"The average of the numbers in the list is: {average} \n");
         }
         static void NumberOfElements(List<int> listint) //Display the number of elements in the series
         {
             Console.Write($"The number of members in the list is: {listint.Count} \n");
-            //return listint.Count;
         }
         static int SumOfElements(List<int> listint)  // Display the sum of the elements in the series.
         {
             int sum = 0;
             foreach (int num in listint)
                 sum += num;
-            //Console.Write($"The sum of all the elements in the list is: {sum} \n");
             return sum;
         }
 
@@ -335,6 +312,21 @@ namespace seriesAnalyzerProject
             }
             return sortSeries;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
