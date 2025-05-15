@@ -21,7 +21,7 @@ namespace seriesAnalyzerProject
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries = AraayToList(arrayStrSeries); // listStrSeries - ממיר את המערך לרשימה של מחרוזות ושומר את ההמרה במשתנה 
+            List<string> listStrSeries = ArrayToList(arrayStrSeries); // listStrSeries - ממיר את המערך לרשימה של מחרוזות ושומר את ההמרה במשתנה 
 
             ValidEmpty(listStrSeries); // מוודא שיש ערכים ברשימה
 
@@ -43,7 +43,7 @@ namespace seriesAnalyzerProject
 
         }
 
-        static List<string> AraayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
+        static List<string> ArrayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
         {
             List<string> listStrSeries = new List<string>();
 
@@ -221,7 +221,7 @@ namespace seriesAnalyzerProject
         {
             for (int i = listint.Count - 1; i >= 0; i--)
             {
-                Console.Write($" {listint[i]} ");
+                Console.Write($"{listint[i]} ");
 
             }
             Console.WriteLine("\n");
@@ -241,26 +241,23 @@ namespace seriesAnalyzerProject
 
         static void LargestNumber(List<int> listint)   //Display the largest number.
         {
-            Console.Write("The largest number on the list is: ");
-            Print(BubbleSort(listint)[listint.Count - 1]);
+            Console.Write($"The largest number on the list is: {BubbleSort(listint)[listint.Count - 1]}");
             //return BubbleSort(listint)[listint.Count -1];
         }
+
         static void SmallestNumber(List<int> listint)  //Display the smallest number.
         {
-            Console.Write("The smallest number on the list is: ");
-            Print(BubbleSort(listint)[0]);
+            Console.Write($"The smallest number on the list is: {BubbleSort(listint)[0]}");
             //return BubbleSort(listint)[0];
         }
         static void Average(List<int> listint)   //Display the average of the numbers.
         {
-            Console.Write("The average of the numbers in the list is: ");
-            Print(SumOfElements(listint) / listint.Count);
+            Console.Write($"The average of the numbers in the list is: {SumOfElements(listint) / listint.Count}");
             //return sumOfElements(listint) / listint.Count;
         }
         static void NumberOfElements(List<int> listint) //Display the number of elements in the series
         {
-            Console.Write("The number of members in the list is: ");
-            Print(listint.Count);
+            Console.Write($"The number of members in the list is: {listint.Count}");
             //return listint.Count;
         }
         static int SumOfElements(List<int> listint)  // Display the sum of the elements in the series.
@@ -268,39 +265,35 @@ namespace seriesAnalyzerProject
             int sum = 0;
             foreach (int num in listint)
                 sum += num;
-            Console.Write("The sum of all the elements in the list is: ");
-            Print(sum);
+            Console.Write($"The sum of all the elements in the list is: {sum}");
             return sum;
         }
 
         static List<int> BubbleSort(List<int> listint)
         {
+            List<int> sortSeries = listint;
             int temp = 0;
             bool flag;
-            for (int i = 0; i < listint.Count; i++)
+            for (int i = 0; i < sortSeries.Count; i++)
             {
                 flag = true;
 
-                for (int j = 0; j < listint.Count - i - 1; j++)
+                for (int j = 0; j < sortSeries.Count - i - 1; j++)
                 {
-                    if (listint[j] > listint[j + 1])
+                    if (sortSeries[j] > sortSeries[j + 1])
                     {
-                        temp = listint[j];
-                        listint[j] = listint[j + 1];
-                        listint[j + 1] = temp;
+                        temp = sortSeries[j];
+                        sortSeries[j] = sortSeries[j + 1];
+                        sortSeries[j + 1] = temp;
                         flag = false;
                     }
                 }
                 if (flag)
-                    return listint;
+                    return sortSeries;
             }
-            return listint;
+            return sortSeries;
         }
 
-        static void Print(int Write)
-        {
-            Console.WriteLine($"{Write} ");
-            Console.WriteLine("");
-        }
+
     }
 }
