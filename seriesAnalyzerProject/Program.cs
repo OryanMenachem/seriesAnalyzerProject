@@ -21,22 +21,22 @@ namespace seriesAnalyzerProject
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries = ArrayToList(arrayStrSeries); // listStrSeries - ממיר את המערך לרשימה של מחרוזות ושומר את ההמרה במשתנה 
+            List<string> listStrSeries = ArrayToList(arrayStrSeries); // Converts the array to a list of strings and saves the conversion in the - 'listStrSeries' variable.
 
-            ValidEmpty(listStrSeries); // מוודא שיש ערכים ברשימה
+            ValidEmpty(listStrSeries); // Makes sure there are values ​​in the list
 
 
-            ValidInt(listStrSeries); // מוודא שהרשימה מחזירה רק מספרים
+            ValidInt(listStrSeries); // Makes sure the list only returns numbers
 
-            List<int> listint = ListStrToListInt(listStrSeries); // ממיר את הרשימה לרשימה של int ושומר אותה במשתנה - listint
+            List<int> listint = ListStrToListInt(listStrSeries); // Converts the list to a list of ints and stores it in a variable - listint
 
-            ValidPositive(listint); // מוודא שהרשימה מכילה רק מספרים חיוביים
+            ValidPositive(listint); // Makes sure the list contains only positive numbers
 
-            ValidThree(listint); // מוודא שיש ברשימה לפחות שלושה ערכים
+            ValidThree(listint); // Makes sure there are at least three values ​​in the list
 
-            Menu(); // מציג למשתמש תפריט עם אופציות לבחירה
+            Menu(); // Presents the user with a menu with options to choose from
 
-            MakingChoice(listint); // מפעיל פונקציות בהתאם לביחרת המשתמש
+            MakingChoice(listint); // Activates functions according to user selection
 
 
 
