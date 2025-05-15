@@ -21,22 +21,22 @@ namespace seriesAnalyzerProject
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries = ArrayToList(arrayStrSeries); // listStrSeries - ממיר את המערך לרשימה של מחרוזות ושומר את ההמרה במשתנה 
+            List<string> listStrSeries = ArrayToList(arrayStrSeries); // Converts the array to a list of strings and saves the conversion in the - 'listStrSeries' variable.
 
-            ValidEmpty(listStrSeries); // מוודא שיש ערכים ברשימה
+            ValidEmpty(listStrSeries); // Makes sure there are values ​​in the list
 
 
-            ValidInt(listStrSeries); // מוודא שהרשימה מחזירה רק מספרים
+            ValidInt(listStrSeries); // Makes sure the list only returns numbers
 
-            List<int> listint = ListStrToListInt(listStrSeries); // ממיר את הרשימה לרשימה של int ושומר אותה במשתנה - listint
+            List<int> listint = ListStrToListInt(listStrSeries); // Converts the list to a list of ints and stores it in a variable - listint
 
-            ValidPositive(listint); // מוודא שהרשימה מכילה רק מספרים חיוביים
+            ValidPositive(listint); // Makes sure the list contains only positive numbers
 
-            ValidThree(listint); // מוודא שיש ברשימה לפחות שלושה ערכים
+            ValidThree(listint); // Makes sure there are at least three values ​​in the list
 
-            Menu(); // מציג למשתמש תפריט עם אופציות לבחירה
+            Menu(); // Presents the user with a menu with options to choose from
 
-            MakingChoice(listint); // מפעיל פונקציות בהתאם לביחרת המשתמש
+            MakingChoice(listint); // Activates functions according to user selection
 
 
 
@@ -90,6 +90,7 @@ namespace seriesAnalyzerProject
                 {
                     Console.WriteLine($"The value {val} is not a number!");
                     InputNum();
+                    break;
                 }
 
             }
@@ -211,7 +212,7 @@ namespace seriesAnalyzerProject
         {
             foreach (var num in listint)
             {
-                Console.Write($" {num} ");
+                Console.Write($"{num} ");
                 
             }
             Console.WriteLine("\n");
@@ -241,23 +242,23 @@ namespace seriesAnalyzerProject
 
         static void LargestNumber(List<int> listint)   //Display the largest number.
         {
-            Console.Write($"The largest number on the list is: {BubbleSort(listint)[listint.Count - 1]}");
+            Console.Write($"The largest number on the list is: {BubbleSort(listint)[listint.Count - 1]}\n");
             //return BubbleSort(listint)[listint.Count -1];
         }
 
         static void SmallestNumber(List<int> listint)  //Display the smallest number.
         {
-            Console.Write($"The smallest number on the list is: {BubbleSort(listint)[0]}");
+            Console.Write($"The smallest number on the list is: {BubbleSort(listint)[0]}\n");
             //return BubbleSort(listint)[0];
         }
         static void Average(List<int> listint)   //Display the average of the numbers.
         {
-            Console.Write($"The average of the numbers in the list is: {SumOfElements(listint) / listint.Count}");
+            Console.Write($"The average of the numbers in the list is: {SumOfElements(listint) / listint.Count}\n");
             //return sumOfElements(listint) / listint.Count;
         }
         static void NumberOfElements(List<int> listint) //Display the number of elements in the series
         {
-            Console.Write($"The number of members in the list is: {listint.Count}");
+            Console.Write($"The number of members in the list is: {listint.Count} \n");
             //return listint.Count;
         }
         static int SumOfElements(List<int> listint)  // Display the sum of the elements in the series.
@@ -265,7 +266,7 @@ namespace seriesAnalyzerProject
             int sum = 0;
             foreach (int num in listint)
                 sum += num;
-            Console.Write($"The sum of all the elements in the list is: {sum}");
+            //Console.Write($"The sum of all the elements in the list is: {sum} \n");
             return sum;
         }
 
