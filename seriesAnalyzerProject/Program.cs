@@ -21,22 +21,37 @@ namespace seriesAnalyzerProject
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries = ArrayToList(arrayStrSeries); // Converts the array to a list of strings and saves the conversion in the - 'listStrSeries' variable.
+            List<string> listStrSeries = new List<string>();
+            List<int> listint = new List<int>();
 
-            ValidEmpty(listStrSeries); // Makes sure there are values ​​in the list
+            listStrSeries = ArrayToList(arrayStrSeries);
 
 
-            ValidInt(listStrSeries); // Makes sure the list only returns numbers
+            if (ValidIsFull(listStrSeries) && ValidInt(listStrSeries))
+            {
+                listint = ListStrToListInt(listStrSeries);
 
-            List<int> listint = ListStrToListInt(listStrSeries); // Converts the list to a list of ints and stores it in a variable - listint
+                if (ValidPositive(listint) && ValidThree(listint))
+                {
+                    Menu();
+                    MakingChoice(listint);
+                }
+            }
+            else
+            {
+                InputNum();
+            }
 
-            ValidPositive(listint); // Makes sure the list contains only positive numbers
 
-            ValidThree(listint); // Makes sure there are at least three values ​​in the list
+            
 
-            Menu(); // Presents the user with a menu with options to choose from
+ 
 
-            MakingChoice(listint); // Activates functions according to user selection
+              
+            
+
+         
+
 
 
 
@@ -54,12 +69,79 @@ namespace seriesAnalyzerProject
             return listStrSeries;
          }
 
-        
+        static bool ValidIsFull(List<string> listStrSeries)
+        {
+            bool full = true;
+
+            if (listStrSeries.Count == 0)
+            {
+                full = false;
+                ErrorMessage(1);
+            }
+            return full;
+
+        }
 
 
+        static bool ValidInt(List<string> listStrSeries) // Receives a list of strings and confirms that all iterations contain only numbers.
+        {
+            foreach (var val in listStrSeries)
+            {
+                if (!int.TryParse(val, out int num))
+                {
+                    ErrorMessage(2);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        static bool ValidPositive(List<int> listIntSeries) // Receives a list of integers and checks if all numbers in the list are positive.
+        {
+            foreach (var val in listIntSeries)
+            {
+                if (val < 0)
+                {
+                    ErrorMessage(3);
+                    return false;
+                }
+            }
+            return true;
+        }
 
 
+        static bool ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
+        {
+            if (listIntSeries.Count < 2)
+            {
+                ErrorMessage(4);
+                return false;
+            }
+            return true;
 
+        }
+
+        static void ErrorMessage(int num)
+        {
+            switch (num)
+            {
+                case 1:
+                Console.WriteLine("ERROR - No number entered! ");
+                    break;
+                case 2:
+                    Console.WriteLine("ERROR - The value entered is not a number! ");
+                    break;
+                case 3:
+                    Console.WriteLine("ERROR - The number entered is not a positive number! ");
+                    break;
+                case 4:
+                Console.WriteLine("ERROR - Fewer than three numbers entered! ");
+                    break;
+                default:
+                    // code block
+                    break;
+            }
+        }
         static void InputNum() // Receives an array of strings from the user.
         {
             Console.WriteLine("Please enter at least three positive numbers:");
@@ -71,30 +153,8 @@ namespace seriesAnalyzerProject
 
 
 
-        static void ValidEmpty(List<string> listStrSeries)
-        {
-            if (listStrSeries.Count == 0)
-            {
-                Console.WriteLine("No number entered");
-                InputNum();
-            }
 
-        }
 
-        static void ValidInt(List<string> listStrSeries) // Receives a list of strings and confirms that all iterations contain only numbers.
-        {
-            foreach (var val in listStrSeries)
-            {
-
-                if (!int.TryParse(val, out int num))
-                {
-                    Console.WriteLine($"The value {val} is not a number!");
-                    InputNum();
-                    break;
-                }
-
-            }
-        }
 
         static List<int> ListStrToListInt(List<string> listStrSeries) // Receives a list of strings and converts it to a list of integers.
         {
@@ -107,29 +167,8 @@ namespace seriesAnalyzerProject
             return listIntSeries;
         }
 
-        static void ValidPositive(List<int> listIntSeries) // Receives a list of integers and checks if all numbers in the list are positive.
-        {
-            foreach (var val in listIntSeries)
-            {
-                if (val < 0)
-                {
-                    Console.WriteLine($"The number {val} is not a positive number.");
-                    InputNum();
-                }
-            }
-
-        }
-
-        static void ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
-        {
-            if (listIntSeries.Count < 3)
-            {
-                Console.WriteLine("Fewer than three numbers entered! ");
-                InputNum();
-            }
 
 
-        }
 
         static void Menu()
         {
@@ -197,9 +236,11 @@ namespace seriesAnalyzerProject
                     break;
 
                 case "10":
+                    Console.WriteLine("good bye :) ");
                     break;
 
                 default:
+                    Console.WriteLine("Please enter a valid input: ");
                     Menu();
                     MakingChoice(listNum);
                     break;
