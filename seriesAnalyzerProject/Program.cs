@@ -221,7 +221,7 @@ namespace seriesAnalyzerProject
         {
             for (int i = listint.Count - 1; i >= 0; i--)
             {
-                Console.Write($" {listint[i]} ");
+                Console.Write($"{listint[i]} ");
 
             }
             Console.WriteLine("\n");
