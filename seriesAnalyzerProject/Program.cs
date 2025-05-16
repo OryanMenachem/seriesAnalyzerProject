@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,7 +109,7 @@ namespace seriesAnalyzerProject
 
         static bool ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
         {
-            if (listIntSeries.Count < 2)
+            if (listIntSeries.Count < 3)
             {
                 ErrorMessage(4);
                 return false;
