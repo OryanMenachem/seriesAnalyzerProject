@@ -160,61 +160,62 @@ namespace seriesAnalyzerProject
             string choice = Console.ReadLine();
             Console.WriteLine("");
 
-            while (true)
+            switch (choice)
             {
+                case "1":
+                    InputNum();
+                    break;
+                case "2":
+                    DisplayInOrder(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+                case "3":
+                    DisplayFromEnd(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+                case "4":
+                    DisplayFromSmallest(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+                case "5":
+                    LargestNumber(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+                case "6":
+                    SmallestNumber(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+                case "7":
+                    Average(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+                case "8":
+                    NumberOfElements(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+                case "9":
+                    SumOfElements(listNum);
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
 
-                if (choice == "1")
-
-                { InputNum(); }
-
-                else if (choice == "2")
-
-                { DisplayInOrder(listNum); }
-
-
-                else if (choice == "3")
-                { DisplayFromEnd(listNum); }
-
-
-
-                else if (choice == "4")
-                { DisplayFromSmallest(listNum); }
-
-
-                else if (choice == "5")
-                { LargestNumber(listNum); }
-
-
-                else if (choice == "6")
-                { SmallestNumber(listNum); }
-
-
-                else if (choice == "7")
-                { Average(listNum); }
-
-
-                else if (choice == "8")
-                { NumberOfElements(listNum); }
-
-
-                else if (choice == "9")
-                { SumOfElements(listNum); }
-
-
-
-                else if (choice == "10")
-                {
+                case "10":
                     Console.WriteLine("good bye :) ");
                     break;
-                }
 
-                else
-                { Console.WriteLine("Please enter a valid input: "); }
-                       
-                        
-                
-                Menu();
-                MakingChoice(listNum);
+                default:
+                    Console.WriteLine("Please enter a valid input: ");
+                    Menu();
+                    MakingChoice(listNum);
+                    break;
+
             }
         }
 
