@@ -33,29 +33,12 @@ namespace seriesAnalyzerProject
                     Menu();
                     MakingChoice(listint);
                 }
-
-
             }
             else
             {
                 InputNum();
             }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 
         static List<string> ArrayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
         {
@@ -74,14 +57,11 @@ namespace seriesAnalyzerProject
 
             if (listStrSeries.Count == 0)
             {
-                Console.WriteLine("ERROR - No number entered! ");
                 full = false;
+                Console.WriteLine("ERROR - The value entered is not a number! ");
             }
             return full;
         }
-
-        
-
 
         static bool ValidInt(List<string> listStrSeries) // Receives a list of strings and confirms that all iterations contain only numbers.
         {
@@ -90,7 +70,7 @@ namespace seriesAnalyzerProject
                 if (!int.TryParse(val, out int num))
                 {
                     Console.WriteLine("ERROR - The value entered is not a number! ");
-                    return false; 
+                    return false;
                 }
             }
             return true;
@@ -110,7 +90,6 @@ namespace seriesAnalyzerProject
         }
 
 
-
         static bool ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
         {
             if (listIntSeries.Count < 3)
@@ -119,32 +98,9 @@ namespace seriesAnalyzerProject
                 return false;
             }
             return true;
-
         }
 
-   
-            
-        static void InputNum() // Receives an array of strings from the user.
-        {
-            switch (num)
-            {
-                case 1:
-                    Console.WriteLine("ERROR - No number entered! ");
-                    break;
-                case 2:
-                    Console.WriteLine("ERROR - The value entered is not a number! ");
-                    break;
-                case 3:
-                    Console.WriteLine("ERROR - The number entered is not a positive number! ");
-                    break;
-                case 4:
-                    Console.WriteLine("ERROR - Fewer than three numbers entered! ");
-                    break;
-                default:
-                    // code block
-                    break;
-            }
-        }
+
         static void InputNum() // Receives an array of strings from the user.
         {
             Console.WriteLine("Please enter at least three positive numbers:");
