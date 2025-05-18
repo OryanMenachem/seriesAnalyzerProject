@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,6 +124,27 @@ namespace seriesAnalyzerProject
 
    
             
+        static void InputNum() // Receives an array of strings from the user.
+        {
+            switch (num)
+            {
+                case 1:
+                    Console.WriteLine("ERROR - No number entered! ");
+                    break;
+                case 2:
+                    Console.WriteLine("ERROR - The value entered is not a number! ");
+                    break;
+                case 3:
+                    Console.WriteLine("ERROR - The number entered is not a positive number! ");
+                    break;
+                case 4:
+                    Console.WriteLine("ERROR - Fewer than three numbers entered! ");
+                    break;
+                default:
+                    // code block
+                    break;
+            }
+        }
         static void InputNum() // Receives an array of strings from the user.
         {
             Console.WriteLine("Please enter at least three positive numbers:");
