@@ -33,27 +33,29 @@ namespace seriesAnalyzerProject
                     Menu();
                     MakingChoice(listint);
                 }
+
+
             }
             else
             {
                 InputNum();
             }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
         static List<string> ArrayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
         {
@@ -72,12 +74,13 @@ namespace seriesAnalyzerProject
 
             if (listStrSeries.Count == 0)
             {
+                Console.WriteLine("ERROR - No number entered! ");
                 full = false;
-                ErrorMessage(1);
             }
             return full;
-
         }
+
+        
 
 
         static bool ValidInt(List<string> listStrSeries) // Receives a list of strings and confirms that all iterations contain only numbers.
@@ -86,8 +89,8 @@ namespace seriesAnalyzerProject
             {
                 if (!int.TryParse(val, out int num))
                 {
-                    ErrorMessage(2);
-                    return false;
+                    Console.WriteLine("ERROR - The value entered is not a number! ");
+                    return false; 
                 }
             }
             return true;
@@ -99,7 +102,7 @@ namespace seriesAnalyzerProject
             {
                 if (val < 0)
                 {
-                    ErrorMessage(3);
+                    Console.WriteLine("ERROR - The number entered is not a positive number! ");
                     return false;
                 }
             }
@@ -107,38 +110,20 @@ namespace seriesAnalyzerProject
         }
 
 
+
         static bool ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
         {
             if (listIntSeries.Count < 3)
             {
-                ErrorMessage(4);
+                Console.WriteLine("ERROR - Fewer than three numbers entered! ");
                 return false;
             }
             return true;
 
         }
 
-        static void ErrorMessage(int num)
-        {
-            switch (num)
-            {
-                case 1:
-                    Console.WriteLine("ERROR - No number entered! ");
-                    break;
-                case 2:
-                    Console.WriteLine("ERROR - The value entered is not a number! ");
-                    break;
-                case 3:
-                    Console.WriteLine("ERROR - The number entered is not a positive number! ");
-                    break;
-                case 4:
-                    Console.WriteLine("ERROR - Fewer than three numbers entered! ");
-                    break;
-                default:
-                    // code block
-                    break;
-            }
-        }
+   
+            
         static void InputNum() // Receives an array of strings from the user.
         {
             Console.WriteLine("Please enter at least three positive numbers:");
@@ -175,62 +160,61 @@ namespace seriesAnalyzerProject
             string choice = Console.ReadLine();
             Console.WriteLine("");
 
-            switch (choice)
+            while (true)
             {
-                case "1":
-                    InputNum();
-                    break;
-                case "2":
-                    DisplayInOrder(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-                case "3":
-                    DisplayFromEnd(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-                case "4":
-                    DisplayFromSmallest(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-                case "5":
-                    LargestNumber(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-                case "6":
-                    SmallestNumber(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-                case "7":
-                    Average(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-                case "8":
-                    NumberOfElements(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-                case "9":
-                    SumOfElements(listNum);
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
 
-                case "10":
+                if (choice == "1")
+
+                { InputNum(); }
+
+                else if (choice == "2")
+
+                { DisplayInOrder(listNum); }
+
+
+                else if (choice == "3")
+                { DisplayFromEnd(listNum); }
+
+
+
+                else if (choice == "4")
+                { DisplayFromSmallest(listNum); }
+
+
+                else if (choice == "5")
+                { LargestNumber(listNum); }
+
+
+                else if (choice == "6")
+                { SmallestNumber(listNum); }
+
+
+                else if (choice == "7")
+                { Average(listNum); }
+
+
+                else if (choice == "8")
+                { NumberOfElements(listNum); }
+
+
+                else if (choice == "9")
+                { SumOfElements(listNum); }
+
+
+
+                else if (choice == "10")
+                {
                     Console.WriteLine("good bye :) ");
                     break;
+                }
 
-                default:
-                    Console.WriteLine("Please enter a valid input: ");
-                    Menu();
-                    MakingChoice(listNum);
-                    break;
-
+                else
+                { Console.WriteLine("Please enter a valid input: "); }
+                       
+                        
+                
+                Menu();
+                MakingChoice(listNum);
             }
         }
 
