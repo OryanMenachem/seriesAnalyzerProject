@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,37 +11,52 @@ namespace seriesAnalyzerProject
 {
     internal class Program
     {
-
-        static void Main(string[] args) // Receives an array of strings and runs a conversion function to a list of strings with the received value.
+        /* Receives an array of strings and runs a conversion
+          function to a list of strings with the received value.
+         */
+        static void Main(string[] args) 
         {
             Start(args);
         }
 
         static void Start(string[] arrayStrSeries)
         {
-            List<string> listStrSeries = new List<string>();
-            List<int> listint = new List<int>();
+            // Converts the array to a list of strings.
 
-            listStrSeries = ArrayToList(arrayStrSeries);
+            List<string> listStrSeries = ArrayToList(arrayStrSeries);
 
+            // Makes sure the list is complete, and contains only numbers.
 
-            if (ValidIsFull(listStrSeries) && ValidInt(listStrSeries))
+            if (ValidIsFull(listStrSeries) && ValidInt(listStrSeries))    
             {
-                listint = ListStrToListInt(listStrSeries);
+                //  Converts the strings list to a list of int.
 
-                if (ValidPositive(listint) && ValidThree(listint))
+                List<int> listIntSeries = ListStrToListInt(listStrSeries);
+
+                /* Makes sure all numbers in the list are positive,
+                and that there are at least three numbers.
+                */
+
+                if (ValidPositive(listIntSeries) && ValidThree(listIntSeries)) 
                 {
                     Menu();
-                    MakingChoice(listint);
+                    MakingChoice(listIntSeries);
                 }
             }
+            // If the above conditions are not met, new input is requested from the user.
+
             else
             {
-                InputNum();
+                InputNum();   
             }
         }
 
-        static List<string> ArrayToList(string[] seriesNumbers) // Takes an array of strings and converts it to a list of strings.
+  
+        static List<string> ArrayToList(string[] seriesNumbers)
+
+
+        // Takes an array of strings and converts it to a list of strings.
+
         {
             List<string> listStrSeries = new List<string>();
 
@@ -50,6 +66,8 @@ namespace seriesAnalyzerProject
             }
             return listStrSeries;
         }
+
+
 
         static bool ValidIsFull(List<string> listStrSeries)
         {
@@ -63,7 +81,11 @@ namespace seriesAnalyzerProject
             return full;
         }
 
-        static bool ValidInt(List<string> listStrSeries) // Receives a list of strings and confirms that all iterations contain only numbers.
+        static bool ValidInt(List<string> listStrSeries)
+
+        /* Receives a list of strings and confirms
+         that all iterations contain only numbers.
+        */
         {
             foreach (var val in listStrSeries)
             {
@@ -76,7 +98,11 @@ namespace seriesAnalyzerProject
             return true;
         }
 
-        static bool ValidPositive(List<int> listIntSeries) // Receives a list of integers and checks if all numbers in the list are positive.
+        static bool ValidPositive(List<int> listIntSeries)
+
+         /*  Receives a list of integers and checks if
+          all numbers in the list are positive.
+         */
         {
             foreach (var val in listIntSeries)
             {
@@ -90,7 +116,11 @@ namespace seriesAnalyzerProject
         }
 
 
-        static bool ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
+        static bool ValidThree(List<int> listIntSeries)
+
+        /* Gets a list of integers and checks 
+         if the list contains at least three numbers. 
+         */
         {
             if (listIntSeries.Count < 3)
             {
@@ -101,14 +131,20 @@ namespace seriesAnalyzerProject
         }
 
 
-        static void InputNum() // Receives an array of strings from the user.
+        static void InputNum()
+
+         /* Receives an array of strings from the user.
+         */
         {
             Console.WriteLine("Please enter at least three positive numbers:");
             string[] arrayStrSeries = Console.ReadLine().Split(' ');
 
             Start(arrayStrSeries);
         }
-        static List<int> ListStrToListInt(List<string> listStrSeries) // Receives a list of strings and converts it to a list of integers.
+        static List<int> ListStrToListInt(List<string> listStrSeries)
+
+        /* Receives a list of strings and converts it to a list of integers.
+         */
         {
             List<int> listIntSeries = new List<int>();
             foreach (var val in listStrSeries)
@@ -132,7 +168,7 @@ namespace seriesAnalyzerProject
                 "\n9. Display the sum of the elements in the series" +
                 "\n10. Exit\n");
         }
-        static void MakingChoice(List<int> listNum)
+        static void MakingChoice(List<int> listIntSeries)
         {
             string choice = Console.ReadLine();
             Console.WriteLine("");
@@ -143,44 +179,44 @@ namespace seriesAnalyzerProject
                     InputNum();
                     break;
                 case "2":
-                    DisplayInOrder(listNum);
+                    DisplayInOrder(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
                 case "3":
-                    DisplayFromEnd(listNum);
+                    DisplayFromEnd(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
                 case "4":
-                    DisplayFromSmallest(listNum);
+                    DisplayFromSmallest(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
                 case "5":
-                    LargestNumber(listNum);
+                    LargestNumber(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
                 case "6":
-                    SmallestNumber(listNum);
+                    SmallestNumber(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
                 case "7":
-                    Average(listNum);
+                    Average(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
                 case "8":
-                    NumberOfElements(listNum);
+                    NumberOfElements(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
                 case "9":
-                    SumOfElements(listNum);
+                    SumOfElements(listIntSeries);
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
 
                 case "10":
@@ -188,71 +224,81 @@ namespace seriesAnalyzerProject
                     break;
 
                 default:
-                    Console.WriteLine("Please enter a valid input: ");
+                    Console.WriteLine("ERROR - Invalid input was entered!");
                     Menu();
-                    MakingChoice(listNum);
+                    MakingChoice(listIntSeries);
                     break;
 
             }
         }
 
 
-        static void DisplayInOrder(List<int> listint) //Display numbers in the order they were entered
+        static void DisplayInOrder(List<int> listIntSeries)
+        
+         /*Display numbers in the order they were entered
+         */
         {
-            foreach (var num in listint)
+            foreach (var num in listIntSeries)
             {
                 Console.Write($"{num} ");
             }
             Console.WriteLine("\n");
         }
 
-        static void DisplayFromEnd(List<int> listint)   //Display numbers from end to beginning.
+        static void DisplayFromEnd(List<int> listIntSeries)
+
+        /* Display numbers from end to beginning.
+         */
         {
-            for (int i = listint.Count - 1; i >= 0; i--)
+            for (int i = listIntSeries.Count - 1; i >= 0; i--)
             {
-                Console.Write($"{listint[i]} ");
+                Console.Write($"{listIntSeries[i]} ");
             }
             Console.WriteLine("\n");
         }
 
-        static void DisplayFromSmallest(List<int> listint)  //Display numbers from smallest to largest.
+        static void DisplayFromSmallest(List<int> listIntSeries)
+       
+         /*Display numbers from smallest to largest.
+          */
+         
         {
-            foreach (int num in BubbleSort(listint))
+            foreach (int num in OptimalBubbleSorting(listIntSeries))
             {
                 Console.Write($"{num} ");
             }
             Console.WriteLine("");
         }
 
-        static void LargestNumber(List<int> listint)   //Display the largest number.
+        static void LargestNumber(List<int> listIntSeries)   //Display the largest number.
         {
-            Console.Write($"The largest number on the list is: {BubbleSort(listint)[listint.Count - 1]}\n");
+            Console.Write($"The largest number on the list is: {OptimalBubbleSorting(listIntSeries)[listIntSeries.Count - 1]}\n");
         }
 
-        static void SmallestNumber(List<int> listint)  //Display the smallest number.
+        static void SmallestNumber(List<int> listIntSeries)  //Display the smallest number.
         {
-            Console.Write($"The smallest number on the list is: {BubbleSort(listint)[0]}\n");
+            Console.Write($"The smallest number on the list is: {OptimalBubbleSorting(listIntSeries)[0]}\n");
         }
-        static void Average(List<int> listint)   //Display the average of the numbers.
+        static void Average(List<int> listIntSeries)   //Display the average of the numbers.
         {
-            int average = SumOfElements(listint) / listint.Count;
+            int average = SumOfElements(listIntSeries) / listIntSeries.Count;
             Console.Write($"The average of the numbers in the list is: {average} \n");
         }
-        static void NumberOfElements(List<int> listint) //Display the number of elements in the series
+        static void NumberOfElements(List<int> listIntSeries) //Display the number of elements in the series
         {
-            Console.Write($"The number of members in the list is: {listint.Count} \n");
+            Console.Write($"The number of members in the list is: {listIntSeries.Count} \n");
         }
-        static int SumOfElements(List<int> listint)  // Display the sum of the elements in the series.
+        static int SumOfElements(List<int> listIntSeries)  // Display the sum of the elements in the series.
         {
             int sum = 0;
-            foreach (int num in listint)
+            foreach (int num in listIntSeries)
                 sum += num;
             return sum;
         }
 
-        static List<int> BubbleSort(List<int> listint)
+        static List<int> OptimalBubbleSorting(List<int> listIntSeries)
         {
-            List<int> sortSeries = listint;
+            List<int> sortSeries = listIntSeries;
             int temp = 0;
             bool flag;
             for (int i = 0; i < sortSeries.Count; i++)
