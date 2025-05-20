@@ -71,14 +71,13 @@ namespace seriesAnalyzerProject
 
         static bool ValidIsFull(List<string> listStrSeries)
         {
-            bool full = true;
 
             if (listStrSeries.Count == 0)
-            {
-                full = false;
+            {            
                 Console.WriteLine("ERROR - The value entered is not a number! ");
+                return false;
             }
-            return full;
+            return true;
         }
 
         static bool ValidInt(List<string> listStrSeries)
@@ -320,22 +319,22 @@ namespace seriesAnalyzerProject
             }
             return sortSeries;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
