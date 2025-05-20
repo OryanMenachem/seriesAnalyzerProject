@@ -24,11 +24,11 @@ namespace seriesAnalyzerProject
         static void Start(string[] arrayStrSeries)                                  // Converts the array to a list of strings.
         {
 
-            List<string> listStrSeries = ArrayToList(arrayStrSeries);              // Makes sure the list is complete, and contains only numbers.
+            List<string> listStrSeries = ConvertArrayToList(arrayStrSeries);              // Makes sure the list is complete, and contains only numbers.
 
             if (ValidIsFull(listStrSeries) && ValidInteger(listStrSeries))
             {
-                List<int> listIntSeries = ListStrToListInt(listStrSeries);
+                List<int> listIntSeries = ConvertListStrToListInt(listStrSeries);
 
                 if (ValidPositive(listIntSeries) && ValidThree(listIntSeries))     // Makes sure all numbers in the list are positive, and that there are at least three numbers.
                 {
@@ -59,7 +59,7 @@ namespace seriesAnalyzerProject
 
 
 
-        static List<string> ArrayToList(string[] seriesNumbers)  // Takes an array of strings and converts it to a list of strings.
+        static List<string> ConvertArrayToList(string[] seriesNumbers)  // Takes an array of strings and converts it to a list of strings.
 
         {
             List<string> listStrSeries = new List<string>();
@@ -138,6 +138,7 @@ namespace seriesAnalyzerProject
         static void InputNum() // Receives an array of strings from the user.
         {
             Console.WriteLine("Please enter at least three positive numbers:");
+
             string[] arrayStrSeries = Console.ReadLine().Split(' ');
 
             Start(arrayStrSeries);
@@ -145,10 +146,10 @@ namespace seriesAnalyzerProject
 
 
 
-        static List<int> ListStrToListInt(List<string> listStrSeries)      // Receives a list of strings and converts it to a list of integers.
-
+        static List<int> ConvertListStrToListInt(List<string> listStrSeries)      // Receives a list of strings and converts it to a list of integers.
         {
             List<int> listIntSeries = new List<int>();
+
             foreach (var val in listStrSeries)
             {
                 listIntSeries.Add(Convert.ToInt32(val));
