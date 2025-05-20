@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Lifetime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,43 +20,42 @@ namespace seriesAnalyzerProject
             Start(args);
         }
 
-        static void Start(string[] arrayStrSeries)
+           
+        static void Start(string[] arrayStrSeries)   // Converts the array to a list of strings.
         {
-            // Converts the array to a list of strings.
 
-            List<string> listStrSeries = ArrayToList(arrayStrSeries);
+            List<string> listStrSeries = ArrayToList(arrayStrSeries);   // Makes sure the list is complete, and contains only numbers.
 
-            // Makes sure the list is complete, and contains only numbers.
+
 
             if (ValidIsFull(listStrSeries) && ValidInt(listStrSeries))    
             {
-                //  Converts the strings list to a list of int.
-
                 List<int> listIntSeries = ListStrToListInt(listStrSeries);
-
-                /* Makes sure all numbers in the list are positive,
-                and that there are at least three numbers.
-                */
-
-                if (ValidPositive(listIntSeries) && ValidThree(listIntSeries)) 
+                
+                if (ValidPositive(listIntSeries) && ValidThree(listIntSeries))   // Makes sure all numbers in the list are positive, and that there are at least three numbers.
                 {
                     Menu();
                     MakingChoice(listIntSeries);
                 }
             }
-            // If the above conditions are not met, new input is requested from the user.
-
-            else
+            else   // If the above conditions are not met, new input is requested from the user.
             {
-                InputNum();   
+                InputNum();
             }
         }
 
-  
-        static List<string> ArrayToList(string[] seriesNumbers)
 
 
-        // Takes an array of strings and converts it to a list of strings.
+
+
+
+
+
+
+
+
+
+        static List<string> ArrayToList(string[] seriesNumbers)  // Takes an array of strings and converts it to a list of strings.
 
         {
             List<string> listStrSeries = new List<string>();
@@ -66,6 +66,10 @@ namespace seriesAnalyzerProject
             }
             return listStrSeries;
         }
+
+
+
+
 
 
 
@@ -80,11 +84,7 @@ namespace seriesAnalyzerProject
             return true;
         }
 
-        static bool ValidInt(List<string> listStrSeries)
-
-        /* Receives a list of strings and confirms
-         that all iterations contain only numbers.
-        */
+        static bool ValidInt(List<string> listStrSeries)   // Receives a list of strings and confirms that all iterations contain only numbers.
         {
             foreach (var val in listStrSeries)
             {
@@ -97,11 +97,12 @@ namespace seriesAnalyzerProject
             return true;
         }
 
-        static bool ValidPositive(List<int> listIntSeries)
 
-         /*  Receives a list of integers and checks if
-          all numbers in the list are positive.
-         */
+
+
+
+        static bool ValidPositive(List<int> listIntSeries) //  Receives a list of integers and checks if all numbers in the list are positive.
+
         {
             foreach (var val in listIntSeries)
             {
@@ -115,11 +116,11 @@ namespace seriesAnalyzerProject
         }
 
 
-        static bool ValidThree(List<int> listIntSeries)
 
-        /* Gets a list of integers and checks 
-         if the list contains at least three numbers. 
-         */
+
+
+        static bool ValidThree(List<int> listIntSeries) // Gets a list of integers and checks if the list contains at least three numbers. 
+
         {
             if (listIntSeries.Count < 3)
             {
@@ -130,16 +131,16 @@ namespace seriesAnalyzerProject
         }
 
 
-        static void InputNum()
-
-         /* Receives an array of strings from the user.
-         */
+        static void InputNum() // Receives an array of strings from the user.
         {
             Console.WriteLine("Please enter at least three positive numbers:");
             string[] arrayStrSeries = Console.ReadLine().Split(' ');
 
             Start(arrayStrSeries);
         }
+
+
+
         static List<int> ListStrToListInt(List<string> listStrSeries)
 
         /* Receives a list of strings and converts it to a list of integers.
@@ -244,10 +245,8 @@ namespace seriesAnalyzerProject
             Console.WriteLine("\n");
         }
 
-        static void DisplayFromEnd(List<int> listIntSeries)
+        static void DisplayFromEnd(List<int> listIntSeries) // Display numbers from end to beginning.
 
-        /* Display numbers from end to beginning.
-         */
         {
             for (int i = listIntSeries.Count - 1; i >= 0; i--)
             {
@@ -256,11 +255,8 @@ namespace seriesAnalyzerProject
             Console.WriteLine("\n");
         }
 
-        static void DisplayFromSmallest(List<int> listIntSeries)
-       
-         /*Display numbers from smallest to largest.
-          */
-         
+        static void DisplayFromSmallest(List<int> listIntSeries) // Display numbers from smallest to largest.
+
         {
             foreach (int num in OptimalBubbleSorting(listIntSeries))
             {
