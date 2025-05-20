@@ -233,10 +233,8 @@ namespace seriesAnalyzerProject
         }
 
 
-        static void DisplayInOrder(List<int> listIntSeries)
-        
-         /*Display numbers in the order they were entered
-         */
+        static void DisplayInOrder(List<int> listIntSeries) // Display numbers in the order they were entered
+
         {
             foreach (var num in listIntSeries)
             {
